@@ -1,0 +1,18 @@
+<h1>Ini adalah Halaman Index</h1>
+<h3>Daftar Mahasiswa</h3>
+<% if (mahasiswa.length < 1) { %>
+    <h4>Data Mahasiswa masih kosong</h4>
+    <% } else { %>
+
+
+        <% mahasiswa.forEach(arr=> { %>
+            <ul>
+                <li>
+                    <%= arr.nama %>
+                </li>
+                <li>
+                    <%= arr.age %>
+                </li>
+            </ul>
+            <% }) %>
+                <% } %>

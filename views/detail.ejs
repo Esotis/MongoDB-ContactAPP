@@ -1,0 +1,44 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Detail Contact</h2>
+            <% if (!contact) { %>
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:">
+                        <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div class="fw-bold">
+                        Contact tidak ditemukan! <br> <br>
+                        <div class="alert alert-success bot-left" role="alert">
+                            <a href="/contact" class="alert-link">&laquo; Kembali ke Daftar Contact</a>
+                        </div>
+                    </div>
+                </div>
+
+                <% } else { %>
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= contact.nama %>
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                <%= contact.noHP %>
+                            </h6>
+                            <p class="card-text">
+                                <%= contact.email %>
+                            </p>
+                            <a href="/contact/edit/<%= contact.nama %>" class="btn btn-info badge">Edit</a>
+                            <form action="/contact?_method=DELETE" method="POST" class="d-inline">
+                                <input type="hidden" name="nama" value="<%= contact.nama%>">
+                                <button type="submit" class="btn btn-danger badge"
+                                    onclick="return confirm('Yakin ingin menghapus contact?')">Hapus</button>
+                            </form>
+                            <!-- <a href="/contact/delete/<%= contact.nama %>" class="btn btn-danger badge"
+                                onclick="return confirm('Yakin ingin menghapus contact?')">Hapus</a> -->
+                            <a href="/contact" class="card-link d-block mt-3">&laquo; Kembali ke Daftar Contact</a>
+                        </div>
+                    </div>
+                    <% } %>
+        </div>
+    </div>
+</div>
